@@ -1,0 +1,122 @@
+﻿@model GestionStock.Models.Stock
+@{
+    ViewData["Title"] = "Créer un stock";
+}
+
+<style>
+    .form-container {
+        background: #fff;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #333;
+    }
+
+    .form-control {
+        border-radius: 0.5rem;
+        transition: border-color 1.2s, box-shadow 0.8s;
+        border: 1px solid #444; /* Couleur de bordure plus foncée */
+    }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+    .btn-primary {
+        background-color: #0d6efd;
+        border-radius: 0.6rem;
+        font-weight: 500;
+        padding: 0.6rem 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+        .btn-primary i {
+            font-size: 1.2rem;
+        }
+</style>
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-dark fw-bold mb-0">@ViewData["Title"]</h2>
+        <a class="btn btn-outline-secondary" href="@Url.Action("Index")">
+            <i class="material-symbols-rounded align-middle">arrow_back</i> Retour
+        </a>
+    </div>
+
+    <div class="form-container mx-auto" style="max-width: 720px;">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="ProduitId" class="form-label">Produit</label>
+                <select asp-for="ProduitId" class="form-control" asp-items="ViewBag.ProduitId"></select>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="EntrepotId" class="form-label">Entrepôt</label>
+                <select asp-for="EntrepotId" class="form-control" asp-items="ViewBag.EntrepotId" id="EntrepotId">
+                    <option value="">Sélectionner un entrepôt</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Rayon" class="form-label">Rayon</label>
+                <select asp-for="Rayon" class="form-control" id="Rayon">
+                    <option value="">Sélectionner un rayon</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="SeuilAlerte" class="form-label">Seuil d'alerte</label>
+                <input asp-for="SeuilAlerte" class="form-control" />
+                <span asp-validation-for="SeuilAlerte" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Quantite" class="form-label">Quantité</label>
+                <input asp-for="Quantite" class="form-control" />
+                <span asp-validation-for="Quantite" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">
+                    <i class="material-symbols-rounded">add_circle</i> Créer
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+        document.getElementById("EntrepotId").addEventListener("change", function () {
+            var entrepotId = this.value;
+
+            if (entrepotId) {
+                fetch(`/Stocks/GetRayons?entrepotId=${entrepotId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        var rayonSelect = document.getElementById("Rayon");
+                        rayonSelect.innerHTML = '<option value="">Sélectionner un rayon</option>';
+
+                        data.forEach(function (rayon) {
+                            var option = document.createElement("option");
+                            option.value = rayon;
+                            option.textContent = `Rayon ${rayon}`;
+                            rayonSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error("Erreur lors du chargement des rayons :", error));
+            }
+        });
+    </script>
+}

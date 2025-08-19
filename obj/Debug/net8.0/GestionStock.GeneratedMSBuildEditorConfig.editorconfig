@@ -1,0 +1,205 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = GestionStock
+build_property.RootNamespace = GestionStock
+build_property.ProjectDir = C:\Users\merzo\source\repos\GestionStock\GestionStock\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\merzo\source\repos\GestionStock\GestionStock
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Categories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Categories/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Categories/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Categories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Categories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Compte/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHRlXEFjY2Vzc0RlbmllZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Compte/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHRlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Entrepots/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW50cmVwb3RzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Entrepots/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW50cmVwb3RzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Entrepots/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW50cmVwb3RzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Entrepots/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW50cmVwb3RzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Entrepots/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW50cmVwb3RzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/MouvementStocks/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW91dmVtZW50U3RvY2tzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/MouvementStocks/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW91dmVtZW50U3RvY2tzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/MouvementStocks/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW91dmVtZW50U3RvY2tzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/MouvementStocks/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW91dmVtZW50U3RvY2tzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/MouvementStocks/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW91dmVtZW50U3RvY2tzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Produits/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVpdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Produits/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVpdHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Produits/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVpdHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Produits/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVpdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Produits/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVpdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/SousCategories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU291c0NhdGVnb3JpZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/SousCategories/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU291c0NhdGVnb3JpZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/SousCategories/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU291c0NhdGVnb3JpZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/SousCategories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU291c0NhdGVnb3JpZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/SousCategories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU291c0NhdGVnb3JpZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Stocks/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Stocks/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Stocks/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Stocks/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Stocks/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Utilisateurs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRpbGlzYXRldXJzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Utilisateurs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRpbGlzYXRldXJzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Utilisateurs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRpbGlzYXRldXJzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Utilisateurs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRpbGlzYXRldXJzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Utilisateurs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRpbGlzYXRldXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/merzo/source/repos/GestionStock/GestionStock/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-nfii0njouh

@@ -1,0 +1,187 @@
+﻿@model GestionStock.Models.Entrepot
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@section Styles {
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 2rem;
+            color: #343a40;
+            font-weight: bold;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: #6c757d;
+            text-align: center;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .col-md-4 {
+            width: 50%;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                font-size: 1rem;
+                font-weight: bold;
+                color: #495057;
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            .form-group input {
+                width: 100%;
+                padding: 10px;
+                font-size: 1rem;
+                border: 1px solid #ced4da;
+                border-radius: 5px;
+                background-color: #f8f9fa;
+                transition: border-color 0.3s;
+            }
+
+                .form-group input:focus {
+                    border-color: #28a745;
+                    outline: none;
+                }
+
+            .form-group span {
+                font-size: 0.9rem;
+                color: #dc3545;
+            }
+
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .back-link a {
+                color: #007bff;
+                font-size: 1rem;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .back-link a:hover {
+                    color: #0056b3;
+                }
+    </style>
+}
+
+<h1>Créer un entrepôt</h1>
+<h4>Entrepôt</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Nom -->
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label"></label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+
+            <!-- Adresse -->
+            <div class="form-group">
+                <label asp-for="Adresse" class="control-label"></label>
+                <input asp-for="Adresse" class="form-control" />
+                <span asp-validation-for="Adresse" class="text-danger"></span>
+            </div>
+
+            <!-- Capacite -->
+            <div class="form-group">
+                <label asp-for="Capacite" class="control-label"></label>
+                <input asp-for="Capacite" id="Capacite" class="form-control" />
+                <span asp-validation-for="Capacite" class="text-danger"></span>
+            </div>
+
+            <!-- NombreRayons -->
+            <div class="form-group">
+                <label for="NombreRayons" class="control-label">Nombre de rayons</label>
+                <input type="text" id="NombreRayons" class="form-control" readonly />
+            </div>
+
+            <!-- Submit -->
+            <div class="form-group">
+                <input type="submit" value="Créer" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="back-link">
+    <a asp-action="Index">Retour à la liste</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // JavaScript pour calculer NombreRayons dynamiquement
+        document.getElementById('Capacite').addEventListener('input', function() {
+            var capacite = parseInt(this.value);
+            var nombreRayons = Math.floor(capacite / 50);
+            // Minimum 1 rayon si la capacité < 50
+            if (nombreRayons === 0) nombreRayons = 1;
+            // Maximum 8 rayons
+            nombreRayons = Math.min(nombreRayons, 8);
+
+            document.getElementById('NombreRayons').value = nombreRayons;
+        });
+
+        // Initialiser NombreRayons lorsque la page se charge (si capacité par défaut)
+        window.onload = function() {
+            var capacite = parseInt(document.getElementById('Capacite').value);
+            if (capacite) {
+                var nombreRayons = Math.floor(capacite / 50);
+                if (nombreRayons === 0) nombreRayons = 1;
+                nombreRayons = Math.min(nombreRayons, 8);
+                document.getElementById('NombreRayons').value = nombreRayons;
+            }
+        };
+    </script>
+}

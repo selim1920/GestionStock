@@ -1,0 +1,110 @@
+﻿@model IEnumerable<GestionStock.Models.MouvementStock>
+@using GestionStock.Models
+
+@{
+    ViewData["Title"] = "Mouvements de Stock";
+}
+
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="text-dark">Historique des Mouvements de Stock</h3>
+        <div>
+            <a class="btn btn-success me-2" href="@Url.Action("ExportToExcel")">
+                <i class="material-symbols-rounded align-middle">file_download</i> Export Excel
+            </a>
+            <a class="btn btn-primary" asp-action="Create">
+                <i class="material-symbols-rounded align-middle">add</i> Nouveau Mouvement
+            </a>
+        </div>
+    </div>
+
+    <!-- Filtres -->
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-md-3">
+            <input type="text" name="searchProduit" class="form-control" placeholder="Filtrer par produit" value="@ViewBag.SearchProduit" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="searchEntrepot" class="form-control" placeholder="Filtrer par entrepôt" value="@ViewBag.SearchEntrepot" />
+        </div>
+        <div class="col-md-3">
+            <select name="typeMouvement" class="form-select">
+                <option value="">Tous les types</option>
+                @foreach (var type in Enum.GetValues(typeof(GestionStock.Models.TypeMouvement)))
+                {
+                    if (ViewBag.TypeMouvement?.ToString() == type.ToString())
+                    {
+                        <option value="@type" selected>@type</option>
+                    }
+                    else
+                    {
+                        <option value="@type">@type</option>
+                    }
+                }
+            </select>
+
+ </div>
+        <div class="col-md-3 d-flex">
+            <button type="submit" class="btn btn-outline-primary me-2">Filtrer</button>
+            <a href="@Url.Action("Index")" class="btn btn-outline-secondary">Réinitialiser</a>
+        </div>
+    </form>
+
+    <!-- Tableau -->
+    <div class="card">
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-3">
+                <table class="table align-items-center mb-0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Produit</th>
+                            <th>Entrepôt</th>
+                            <th>Type</th>
+                            <th>Quantité</th>
+                            <th>Date</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Produit?.Nom</td>
+                                <td>@item.Entrepot?.Adresse</td>
+                                <td>
+                                    <span class="badge @(item.TypeMouvement == TypeMouvement.Entree ? "bg-success" : "bg-danger")">
+                                        @item.TypeMouvement
+                                    </span>
+                                </td>
+                                <td>@item.Quantite</td>
+                                <td>@item.Date.ToString("yyyy-MM-dd")</td>
+                                <td class="text-end">
+                                    <a class="btn btn-sm btn-info me-1" asp-action="Edit" asp-route-id="@item.Id">
+                                        <i class="material-symbols-rounded">edit</i>
+                                    </a>
+                                    <a class="btn btn-sm btn-secondary me-1" asp-action="Details" asp-route-id="@item.Id">
+                                        <i class="material-symbols-rounded">visibility</i>
+                                    </a>
+                                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">
+                                        <i class="material-symbols-rounded">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+            @for (int i = 1; i <= (int)ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == (int)ViewBag.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i, searchProduit = ViewBag.SearchProduit, searchEntrepot = ViewBag.SearchEntrepot, typeMouvement = ViewBag.TypeMouvement })">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>

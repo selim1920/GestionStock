@@ -1,0 +1,102 @@
+﻿@model GestionStock.Models.Utilisateur
+
+@{
+    ViewData["Title"] = "Modifier l'utilisateur";
+}
+
+<style>
+    .form-container {
+        background: #fff;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-title {
+        font-weight: 700;
+        color: #333;
+    }
+
+    .form-group label {
+        font-weight: 500;
+        color: #555;
+    }
+
+    .form-group input,
+    .form-group select {
+        border-radius: 0.5rem;
+    }
+
+    .btn-outline-secondary {
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+        .btn-outline-secondary i {
+            font-size: 1.1rem;
+        }
+
+    .btn-group a {
+        margin-right: 1rem;
+    }
+</style>
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="form-title mb-0">@ViewData["Title"]</h2>
+        <a class="btn btn-outline-secondary" href="@Url.Action("Index")">
+            <i class="material-symbols-rounded align-middle">arrow_back</i> Retour
+        </a>
+    </div>
+
+    <div class="form-container mx-auto" style="max-width: 720px;">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group mb-3">
+                <label asp-for="Nom" class="control-label"></label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="MotDePasse" class="control-label"></label>
+                <input asp-for="MotDePasse" class="form-control" type="password" />
+                <small class="form-text text-muted">Le mot de passe doit contenir au moins 6 caractères.</small>
+                <span asp-validation-for="MotDePasse" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-4">
+                <label asp-for="Role" class="control-label"></label>
+                <select asp-for="Role" class="form-control" required>
+                    <option value="Admin" selected>Admin</option>
+                    <option value="Membre">Membre</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary">
+                    <i class="material-symbols-rounded">save</i> Enregistrer
+                </button>
+                <a class="btn btn-outline-secondary" asp-action="Index">
+                    <i class="material-symbols-rounded">cancel</i> Annuler
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+

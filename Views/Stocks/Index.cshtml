@@ -1,0 +1,182 @@
+﻿@model IEnumerable<GestionStock.Models.Stock>
+
+@{
+    ViewData["Title"] = "Index";
+    var alertMessages = ViewData["AlertMessages"] as List<string>;
+}
+
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="text-dark">@ViewData["Title"]</h3>
+        <a class="btn btn-primary" href="@Url.Action("Create")">
+            <i class="material-symbols-rounded align-middle">add</i> Nouveau Stock
+        </a>
+    </div>
+
+    <!-- Bouton d'alerte avec icône et badge -->
+    <div class="position-relative d-inline-block">
+        <button class="btn btn-warning position-relative" onclick="toggleNotificationMenu()">
+            <i class="material-symbols-rounded align-middle">notifications</i> Alertes
+            @if (alertMessages != null && alertMessages.Any())
+            {
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    @alertMessages.Count
+                </span>
+            }
+        </button>
+    </div>
+
+    <!-- Menu déroulant des alertes centré -->
+    <div id="notificationMenu" class="alert-menu-center shadow p-4 rounded">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="mb-0">Alertes</h5>
+            <button class="btn-close" onclick="toggleNotificationMenu()" aria-label="Fermer"></button>
+        </div>
+        <hr />
+        @if (alertMessages != null && alertMessages.Any())
+        {
+            foreach (var alert in alertMessages)
+            {
+                <div>@alert</div>
+            }
+        }
+        else
+        {
+            <div>Aucune alerte pour le moment.</div>
+        }
+    </div>
+
+    <!-- Filtres -->
+    <div class="card mt-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="produit">Produit :</label>
+                    <select id="produit" name="produit" class="form-control">
+                        <option value="">Sélectionner un produit</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="entrepot">Entrepôt :</label>
+                    <select id="entrepot" name="entrepot" class="form-control">
+                        <option value="">Sélectionner un entrepôt</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="mt-3">Nombre d'articles : <strong>@Model.Count()</strong></p>
+
+    <!-- Table des stocks -->
+    <div class="card mt-4">
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-3">
+                <table class="table align-items-center mb-0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Produit</th>
+                            <th>Entrepôt</th>
+                            <th>Seuil d'alerte</th>
+                            <th>Rayon</th>
+                            <th>Quantité</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Produit?.Nom</td>
+                                <td>@item.Entrepot?.Adresse</td>
+                                <td>@item.SeuilAlerte</td>
+                                <td>@item.Rayon</td>
+                                <td>@item.Quantite</td>
+                                <td class="text-end">
+                                    <a class="btn btn-sm btn-info me-1" href="@Url.Action("Edit", new { id = item.Id })">
+                                        <i class="material-symbols-rounded">edit</i>
+                                    </a>
+                                    <a class="btn btn-sm btn-secondary me-1" href="@Url.Action("Details", new { id = item.Id })">
+                                        <i class="material-symbols-rounded">visibility</i>
+                                    </a>
+                                    <a class="btn btn-sm btn-danger" href="@Url.Action("Delete", new { id = item.Id })">
+                                        <i class="material-symbols-rounded">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Styles -->
+<style>
+    .alert-menu-center {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff8e1;
+        border: 1px solid #ffc107;
+        border-radius: 10px;
+        z-index: 1050;
+        width: 400px;
+        max-height: 400px;
+        overflow-y: auto;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+        .alert-menu-center div {
+            padding: 10px 15px;
+            border-bottom: 1px solid #ffe082;
+            color: #333;
+            font-size: 14px;
+        }
+
+            .alert-menu-center div:last-child {
+                border-bottom: none;
+            }
+
+            .alert-menu-center div:hover {
+                background-color: #fff3cd;
+            }
+
+    .badge {
+        font-size: 0.75rem;
+        padding: 4px 6px;
+    }
+
+    .btn-close {
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+        .btn-close:focus {
+            outline: none;
+            box-shadow: none;
+        }
+</style>
+
+<!-- Script -->
+<script>
+    function toggleNotificationMenu() {
+        const menu = document.getElementById("notificationMenu");
+        const isVisible = menu.style.display === "block";
+        menu.style.display = isVisible ? "none" : "block";
+    }
+
+    // Fermer le menu si on clique en dehors
+    document.addEventListener('click', function (event) {
+        const menu = document.getElementById("notificationMenu");
+        const button = event.target.closest('button');
+        if (!event.target.closest('#notificationMenu') && !button?.onclick?.toString().includes('toggleNotificationMenu')) {
+            menu.style.display = 'none';
+        }
+    });
+</script>

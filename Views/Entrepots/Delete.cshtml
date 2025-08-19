@@ -1,0 +1,166 @@
+﻿@model GestionStock.Models.Entrepot
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+@section Styles {
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 2rem;
+            color: #343a40;
+            font-weight: bold;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: #6c757d;
+            text-align: center;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .col-md-6 {
+            width: 50%;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                font-size: 1rem;
+                font-weight: bold;
+                color: #495057;
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            .form-group input {
+                width: 100%;
+                padding: 10px;
+                font-size: 1rem;
+                border: 1px solid #ced4da;
+                border-radius: 5px;
+                background-color: #f8f9fa;
+                transition: border-color 0.3s;
+            }
+
+                .form-group input:focus {
+                    border-color: #28a745;
+                    outline: none;
+                }
+
+            .form-group span {
+                font-size: 0.9rem;
+                color: #dc3545;
+            }
+
+        .btn-danger {
+            width: 100%;
+            padding: 12px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .btn-danger:hover {
+                background-color: #c82333;
+            }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .back-link a {
+                color: #007bff;
+                font-size: 1rem;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .back-link a:hover {
+                    color: #0056b3;
+                }
+    </style>
+}
+
+<h1>Supprimer un entrepôt</h1>
+<h4>Entrepôt</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Delete">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Nom -->
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label"></label>
+                <input asp-for="Nom" class="form-control" readonly />
+            </div>
+
+            <!-- Adresse -->
+            <div class="form-group">
+                <label asp-for="Adresse" class="control-label"></label>
+                <input asp-for="Adresse" class="form-control" readonly />
+            </div>
+
+            <!-- Capacite -->
+            <div class="form-group">
+                <label asp-for="Capacite" class="control-label"></label>
+                <input asp-for="Capacite" class="form-control" readonly />
+            </div>
+
+            <!-- NombreRayons -->
+            <div class="form-group">
+                <label asp-for="NombreRayons" class="control-label"></label>
+                <input asp-for="NombreRayons" class="form-control" readonly />
+            </div>
+
+            <!-- CapaciteDisponible -->
+            <div class="form-group">
+                <label asp-for="CapaciteDisponible" class="control-label"></label>
+                <input asp-for="CapaciteDisponible" class="form-control" readonly />
+            </div>
+
+            <!-- Submit -->
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Supprimer" class="btn btn-danger" />
+            </div>
+        </form>
+
+        <div class="back-link">
+            <a asp-action="Index">Retour à la liste</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

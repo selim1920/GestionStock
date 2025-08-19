@@ -1,0 +1,54 @@
+﻿@model IEnumerable<GestionStock.Models.Utilisateur>
+
+@{
+    ViewData["Title"] = "Liste des Utilisateurs";
+}
+
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="text-dark">Liste des Utilisateurs</h3>
+        <a class="btn btn-primary" asp-action="Create">
+            <i class="material-symbols-rounded align-middle">add</i> Nouvel Utilisateur
+        </a>
+    </div>
+
+    <div class="card">
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-3">
+                <table class="table table-striped">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Nom)</th>
+                            <th>@Html.DisplayNameFor(model => model.Email)</th>
+                            <th>Mot de passe</th>
+                            <th>@Html.DisplayNameFor(model => model.Role)</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Nom)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                <td>••••••••</td> <!-- Masqué pour la sécurité -->
+                                <td>@Html.DisplayFor(modelItem => item.Role)</td>
+                                <td class="text-end">
+                                    <a class="btn btn-sm btn-info me-1" asp-action="Edit" asp-route-id="@item.Id">
+                                        <i class="material-symbols-rounded">edit</i>
+                                    </a>
+                                    <a class="btn btn-sm btn-secondary me-1" asp-action="Details" asp-route-id="@item.Id">
+                                        <i class="material-symbols-rounded">visibility</i>
+                                    </a>
+                                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">
+                                        <i class="material-symbols-rounded">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

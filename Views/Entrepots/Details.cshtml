@@ -1,0 +1,147 @@
+﻿@model GestionStock.Models.Entrepot
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@section Styles {
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 2rem;
+            color: #343a40;
+            font-weight: bold;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: #6c757d;
+            text-align: center;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .col-md-6 {
+            width: 50%;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        dl {
+            margin-bottom: 20px;
+        }
+
+        dt {
+            font-weight: bold;
+            color: #495057;
+        }
+
+        dd {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #495057;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .back-link a {
+                color: #007bff;
+                font-size: 1rem;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .back-link a:hover {
+                    color: #0056b3;
+                }
+    </style>
+}
+
+<h1>Details de l'entrepôt</h1>
+<h4>Entrepôt</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Nom)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Nom)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Adresse)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Adresse)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Capacite)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Capacite)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.NombreRayons)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.NombreRayons)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.CapaciteDisponible)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.CapaciteDisponible)
+            </dd>
+        </dl>
+
+        <div class="back-link">
+            <a asp-action="Edit" asp-route-id="@Model?.Id">Modifier</a> |
+            <a asp-action="Index">Retour à la liste</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

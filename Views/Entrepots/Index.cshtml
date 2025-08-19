@@ -1,0 +1,131 @@
+﻿@model IEnumerable<GestionStock.Models.Entrepot>
+
+@{
+    ViewData["Title"] = "Entrepôts";
+    var capacitesRestantes = ViewData["CapacitesRestantes"] as Dictionary<int, int>;
+    var searchString = ViewData["SearchString"] as string;
+    int currentPage = (int)ViewData["CurrentPage"];
+    int totalPages = (int)ViewData["TotalPages"];
+}
+
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="text-dark">Liste des Entrepôts</h3>
+        <a class="btn btn-primary" asp-action="Create">
+            <i class="material-symbols-rounded align-middle">add</i> Nouvel Entrepôt
+        </a>
+    </div>
+
+    <form method="get" asp-action="Index" class="d-flex mb-4 gap-2">
+        <input type="text" name="searchString" value="@searchString" class="form-control w-50" placeholder="Rechercher un entrepôt..." />
+        <button type="submit" class="btn btn-primary">Chercher</button>
+        <a href="@Url.Action("Index")" class="btn btn-outline-secondary">Réinitialiser</a>
+    </form>
+
+    <div class="card shadow">
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-3">
+                <table class="table table-hover align-items-center mb-0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Adresse</th>
+                            <th>Capacité</th>
+                            <th>Rayons</th>
+                            <th>Capacité Dispo</th>
+                            <th>Capacité Restante</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            var collapseId = $"collapseStocks{item.Id}";
+                            <tr>
+                                <td>@item.Nom</td>
+                                <td>@item.Adresse</td>
+                                <td>@item.Capacite</td>
+                                <td>@item.NombreRayons</td>
+                                <td>@item.CapaciteDisponible</td>
+                                <td>
+                                    <span class="fw-bold" style="color:@(capacitesRestantes[item.Id] < 20 ? "red" : "green")">
+                                        @capacitesRestantes[item.Id]
+                                    </span>
+                                </td>
+                                <td class="text-end">
+                                    <a class="btn btn-sm btn-info me-1" asp-action="Edit" asp-route-id="@item.Id">
+                                        <i class="material-symbols-rounded">edit</i>
+                                    </a>
+                                    <a class="btn btn-sm btn-secondary me-1" asp-action="Details" asp-route-id="@item.Id">
+                                        <i class="material-symbols-rounded">visibility</i>
+                                    </a>
+                                    <a class="btn btn-sm btn-danger me-1" asp-action="Delete" asp-route-id="@item.Id">
+                                        <i class="material-symbols-rounded">delete</i>
+                                    </a>
+                                    <button class="btn btn-sm btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#@collapseId" aria-expanded="false">
+                                        <i class="material-symbols-rounded">inventory_2</i> Stocks
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr class="collapse" id="@collapseId">
+                                <td colspan="7" class="bg-light">
+                                    @if (item.Stocks.Any())
+                                    {
+                                        <h6 class="mt-2 mb-1 text-primary">📦 Stocks</h6>
+                                        <ul class="mb-3">
+                                            @foreach (var stock in item.Stocks)
+                                            {
+                                                <li>
+                                                    Produit : <strong>@stock.Produit?.Nom</strong>,
+                                                    Rayon : <strong>@stock.Rayon</strong>,
+                                                    Quantité : <strong>@stock.Quantite</strong>
+                                                </li>
+                                            }
+                                        </ul>
+                                    }
+                                    else
+                                    {
+                                        <em>Aucun stock enregistré pour cet entrepôt.</em>
+                                    }
+
+                                    @* 🎯 Affichage des mouvements *@
+                                    <h6 class="text-success">🔄 Mouvements de Stock</h6>
+                                    @if (item.MouvementsStock != null && item.MouvementsStock.Any())
+                                    {
+                                        <ul class="mb-0">
+                                            @foreach (var mouvement in item.MouvementsStock.OrderByDescending(m => m.Date))
+                                            {
+                                                <li>
+                                                    <span class="text-muted">@mouvement.Date.ToShortDateString()</span> :
+                                                    <strong>@mouvement.TypeMouvement</strong> de
+                                                    <strong>@mouvement.Quantite</strong> unité(s) du produit
+                                                    <strong>@mouvement.Produit?.Nom</strong>
+                                                </li>
+                                            }
+                                        </ul>
+                                    }
+                                    else
+                                    {
+                                        <em>Aucun mouvement enregistré pour cet entrepôt.</em>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <nav class="p-3 d-flex justify-content-center">
+                <ul class="pagination">
+                    @for (int i = 1; i <= totalPages; i++)
+                    {
+                        <li class="page-item @(i == currentPage ? "active" : "")">
+                            <a class="page-link" asp-action="Index" asp-route-page="@i" asp-route-searchString="@searchString">@i</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

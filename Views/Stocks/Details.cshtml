@@ -1,0 +1,84 @@
+﻿@model GestionStock.Models.Stock
+
+@{
+    ViewData["Title"] = "Détails du stock";
+}
+
+<style>
+    .details-container {
+        background: #fff;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    .details-title {
+        font-weight: 700;
+        color: #333;
+    }
+
+    .details-label {
+        font-weight: 500;
+        color: #555;
+    }
+
+    .details-value {
+        color: #222;
+    }
+
+    .btn-outline-secondary {
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+        .btn-outline-secondary i {
+            font-size: 1.1rem;
+        }
+
+    .btn-group a {
+        margin-right: 1rem;
+    }
+</style>
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="details-title mb-0">@ViewData["Title"]</h2>
+        <a class="btn btn-outline-secondary" href="@Url.Action("Index")">
+            <i class="material-symbols-rounded align-middle">arrow_back</i> Retour
+        </a>
+    </div>
+
+    <div class="details-container mx-auto" style="max-width: 720px;">
+        <h4 class="mb-4">Informations sur le stock</h4>
+        <dl class="row">
+            <dt class="col-sm-4 details-label">@Html.DisplayNameFor(model => model.Produit)</dt>
+            <dd class="col-sm-8 details-value">@Html.DisplayFor(model => model.Produit.Nom)</dd>
+
+            <dt class="col-sm-4 details-label">@Html.DisplayNameFor(model => model.Entrepot)</dt>
+            <dd class="col-sm-8 details-value">@Html.DisplayFor(model => model.Entrepot.Adresse)</dd>
+
+            <dt class="col-sm-4 details-label">@Html.DisplayNameFor(model => model.SeuilAlerte)</dt>
+            <dd class="col-sm-8 details-value">@Html.DisplayFor(model => model.SeuilAlerte)</dd>
+
+            <dt class="col-sm-4 details-label">@Html.DisplayNameFor(model => model.Rayon)</dt>
+            <dd class="col-sm-8 details-value">@Html.DisplayFor(model => model.Rayon)</dd>
+
+            <dt class="col-sm-4 details-label">@Html.DisplayNameFor(model => model.Quantite)</dt>
+            <dd class="col-sm-8 details-value">@Html.DisplayFor(model => model.Quantite)</dd>
+        </dl>
+
+        <div class="btn-group mt-4">
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">
+                <i class="material-symbols-rounded">edit</i> Modifier
+            </a>
+            <a class="btn btn-outline-secondary" asp-action="Index">
+                <i class="material-symbols-rounded">list</i> Retour à la liste
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+﻿@model IEnumerable<GestionStock.Models.Produit>
+
+@{
+    ViewData["Title"] = "Produits";
+    var searchString = ViewData["SearchString"] as string;
+    int? seuilMin = ViewData["SeuilMin"] as int?;
+    var sortOrder = ViewData["SortOrder"] as string;
+    int currentPage = (int)ViewData["CurrentPage"];
+    int totalPages = (int)ViewData["TotalPages"];
+    var sousCategorieId = Context.Request.Query["sousCategorieId"].ToString();
+    var fournisseur = Context.Request.Query["fournisseur"].ToString();
+}
+
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="text-dark">Liste des Produits</h3>
+        <div class="d-flex gap-2">
+            <a class="btn btn-success" asp-action="ExportToExcel">
+                <i class="material-symbols-rounded align-middle">download</i> Export Excel
+            </a>
+            <a class="btn btn-primary" asp-action="Create">
+                <i class="material-symbols-rounded align-middle">add</i> Nouveau Produit
+            </a>
+        </div>
+    </div>
+
+    <form method="get" asp-action="Index" class="row mb-4 g-2 align-items-center">
+        <div class="col-md-3">
+            <input type="text" name="searchString" value="@searchString" class="form-control" placeholder="Nom, fournisseur..." />
+        </div>
+        <div class="col-md-2">
+            <select name="sousCategorieId" class="form-select" asp-items="@(ViewData["SousCategorieId"] as SelectList)">
+                <option value="0">Toutes les catégories</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select name="fournisseur" class="form-select" asp-items="@(ViewData["Fournisseurs"] as SelectList)">
+                <option value="">Tous les fournisseurs</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <input type="number" name="seuilMin" value="@seuilMin" class="form-control" placeholder="Seuil min..." />
+        </div>
+        <div class="col-md-3 d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Filtrer</button>
+            <a class="btn btn-outline-secondary" href="@Url.Action("Index")">Réinitialiser</a>
+        </div>
+    </form>
+
+    <div class="card">
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-3">
+                <table class="table align-items-center mb-0">
+                    <thead>
+                        <tr>
+                            <th><a asp-action="Index" asp-route-sortOrder="@(sortOrder == "nom_desc" ? "" : "nom_desc")">Nom</a></th>
+                            <th><a asp-action="Index" asp-route-sortOrder="@(sortOrder == "prix_asc" ? "prix_desc" : "prix_asc")">Prix</a></th>
+                            <th>Fournisseur</th>
+                            <th>Sous-Catégorie</th>
+                            <th><a asp-action="Index" asp-route-sortOrder="@(sortOrder == "seuil_asc" ? "seuil_desc" : "seuil_asc")">Seuil Min</a></th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!Model.Any())
+                        {
+                            <tr><td colspan="6" class="text-center text-muted py-3">Aucun produit trouvé.</td></tr>
+                        }
+                        else
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Nom</td>
+                                    <td>@item.Prix.ToString("0.00") DH</td>
+                                    <td>@item.Fournisseur</td>
+                                    <td>@item.SousCategorie?.Nom</td>
+                                    <td>@item.SeuilMin</td>
+                                    <td class="text-end">
+                                        <a class="btn btn-sm btn-info me-1" asp-action="Edit" asp-route-id="@item.Id"><i class="material-symbols-rounded">edit</i></a>
+                                        <a class="btn btn-sm btn-secondary me-1" asp-action="Details" asp-route-id="@item.Id"><i class="material-symbols-rounded">visibility</i></a>
+                                        <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="material-symbols-rounded">delete</i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <nav class="p-3 d-flex justify-content-center">
+                <ul class="pagination">
+                    @for (int i = 1; i <= totalPages; i++)
+                    {
+                        <li class="page-item @(i == currentPage ? "active" : "")">
+                            <a class="page-link" asp-action="Index"
+                               asp-route-page="@i"
+                               asp-route-searchString="@searchString"
+                               asp-route-sousCategorieId="@sousCategorieId"
+                               asp-route-fournisseur="@fournisseur"
+                               asp-route-seuilMin="@seuilMin"
+                               asp-route-sortOrder="@sortOrder">@i</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
