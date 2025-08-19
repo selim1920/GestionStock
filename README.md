@@ -66,15 +66,9 @@ Le processus actuel est manuel :
 
 ---
 
-## 🔹 6. Capture d’écran / Aperçu
 
-![Aperçu GestionStock](https://via.placeholder.com/800x400.png?text=Capture+d'écran+GestionStock)  
 
-*(Remplace ce lien par la capture réelle de ton projet)*
-
----
-
-## 🔹 7. Technologies utilisées
+## 🔹6. Technologies utilisées
 
 - **Backend :** ASP.NET Core MVC, Entity Framework Core  
 - **Base de données :** SQL Server ou MySQL  
